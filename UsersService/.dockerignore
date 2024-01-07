@@ -1,0 +1,12 @@
+.git
+.gitignore
+.dockerignore
+tmp
+temp
+*.sublime-project
+*.sublime-workspace
+*.idea
+*.vscode
+bin
+obj
+*.log
