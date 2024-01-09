@@ -31,5 +31,5 @@ chmod +x .\e2e-tests-script.sh
 
 This command takes a release name and uninstalls the release
 ```
-helm install elympics .\helm\
+helm uninstall elympics
 ```
