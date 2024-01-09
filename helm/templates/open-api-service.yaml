@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: open-api
+spec:
+  type: {{ .Values.openApi.service.type }}
+  ports:
+  - port: {{ .Values.openApi.service.port }}
+    nodePort: {{ .Values.openApi.service.nodePort }}
+  selector:
+    app: open-api

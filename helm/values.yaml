@@ -1,0 +1,29 @@
+openApi:
+  image:
+    repository: docker.io/sharplord/open-api
+    tag: latest
+  service:
+    type: NodePort
+    port: 80
+    nodePort: 30081
+
+usersService:
+  image:
+    repository: docker.io/sharplord/users-service
+    tag: latest
+  service:
+    type: NodePort
+    port: 8080
+    nodePort: 30080
+
+db:
+  image:
+    repository: postgres
+    tag: latest
+  service:
+    type: NodePort
+    port: 5432
+    nodePort: 30532
+  persistence:
+    enabled: true
+    size: 1Gi
