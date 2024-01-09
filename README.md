@@ -15,7 +15,7 @@ chmod +x integration-tests-script.sh
 
 ./integration-tests-script.sh
 ```
-# Deployemnt on Kubernetes using Helm
+# Deployement on Kubernetes using Helm
 
 This command installs a chart.
 ```
