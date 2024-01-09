@@ -1,0 +1,6 @@
+{
+  "TestConfiguration": {
+    "BaseUrl": "http://localhost:30081",
+    "LastLimit": 7
+  }
+}
