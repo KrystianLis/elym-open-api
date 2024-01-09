@@ -3,7 +3,7 @@ version: "3.9"
 services:
   open-api:
     build:
-      context: OpenApi/OpenApi
+      context: OpenApi/src/OpenApi
       dockerfile: Dockerfile
     environment:
       - Database__ConnectionString=Host=db;Port=5432;Database=elympics;Username=postgres;Password=secret
