@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: open-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: open-api
+  template:
+    metadata:
+      labels:
+        app: open-api
+    spec:
+      initContainers:
+      - name: check-db
+        image: busybox
+        command: ['sh', '-c', 'until nc -z db 5432; do echo waiting for db; sleep 2; done;']
+      containers:
+      - name: open-api
+        image: "{{ .Values.openApi.image.repository }}:{{ .Values.openApi.image.tag }}"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        env:
+        - name: Database__ConnectionString
+          value: "Host=db;Port=5432;Database=elympics;Username=postgres;Password=secret"
+        - name: ASPNETCORE_URLS
+          value: "http://+:80"
+        - name: UsersService__BasePath
+          value: "http://users-service:8080"
+        - name: Configuration__LastLimit
+          value: "7"
+        ports:
+        - containerPort: {{ .Values.openApi.service.port }}
