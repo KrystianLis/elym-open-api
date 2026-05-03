@@ -13,14 +13,14 @@ type Product struct {
 
 type OrderLine struct {
 	Sku      string  `faker:"uuid_hyphenated"`
-	Quantity int     `faker:"oneof: 1, 2, 3, 4, 5"`
+	Quantity int     `faker:"-"`
 	Price    float64 `faker:"amount"`
 }
 
 type Order struct {
 	Id       string      `faker:"uuid_hyphenated"`
 	Customer string      `faker:"name"`
-	Lines    []OrderLine `faker:"slice_len=3"`
+	Lines    []OrderLine `faker:"-"`
 }
 
 type Transaction struct {
