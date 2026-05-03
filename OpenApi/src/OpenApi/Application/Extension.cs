@@ -12,6 +12,7 @@ public static class Extension
         services.AddScoped<ITransactionsService, TransactionsService>();
         services.AddScoped<IAuditEventsService, AuditEventsService>();
         services.AddScoped<IDevicesService, DevicesService>();
+        services.AddSingleton<IQuotesService, QuotesService>();
         return services;
     }
 }

@@ -46,6 +46,9 @@ app.MapGet("/audit-events", async ([FromServices] IAuditEventsService service, C
 app.MapGet("/devices", async ([FromServices] IDevicesService service, CancellationToken token)
     => Results.Ok(await service.GetDevicesAsync(token))).WithName("Get devices");
 
+app.MapGet("/quote", ([FromServices] IQuotesService service)
+    => Results.Ok(service.GetRandomQuote())).WithName("Get random quote");
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
